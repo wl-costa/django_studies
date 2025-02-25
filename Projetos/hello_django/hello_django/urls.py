@@ -20,5 +20,5 @@ from core import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hello/<nome>/', views.hello), # Adiciona a rota 'hello/<nome>/' que chama a função 'hello' do arquivo 'views.py' do app 'core', passando o parâmetro 'nome' para a função
+    path('hello/<nome>/<int:idade>', views.hello), # Adiciona a rota 'hello/<nome>/' que chama a função 'hello' do arquivo 'views.py' do app 'core', passando o parâmetro 'nome' para a função 'hello' e o parâmetro 'idade' como inteiro para a função 'hello'
 ]
