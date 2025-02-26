@@ -10,4 +10,7 @@ class Evento(models.Model):
 
     class Meta:
         db_table = 'evento' # Define o nome da tabela no banco de dados como 'evento' ao invés de 'core_evento' que é o padrão do Django
+        
+    def __str__(self):
+        return self.titulo # Retorna o título do evento como representação do objeto
     
