@@ -5,7 +5,7 @@ from django.db import models
 class Evento(models.Model):
     titulo = models.CharField(max_length=100)
     descricao = models.TextField(blank=True, null=True) # A descrição pode ser nulo ou vazio
-    data_evento = models.DateTimeField()
+    data_evento = models.DateTimeField(verbose_name='Data do Evento') # A data do evento é obrigatória
     data_criacao = models.DateTimeField(auto_now=True) # A data de criação do evento é automatica
 
     class Meta:

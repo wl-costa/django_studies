@@ -3,4 +3,7 @@ from core.models import Evento
 
 # Register your models here.
 
-admin.site.register(Evento) # Registra o modelo Evento no painel de administração do Django
+class EventoAdmin(admin.ModelAdmin):
+    list_display = ('titulo', 'data_evento', 'data_criacao') # Exibe o título, data do evento e data de criação do evento no painel de administração do Django
+
+admin.site.register(Evento, EventoAdmin) # Registra o modelo Evento no painel de administração do Django
