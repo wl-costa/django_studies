@@ -1,3 +1,3 @@
 # django_studies
 
-Repositório dedicado ao estudo prático de django
+Repositório dedicado ao estudo de django
