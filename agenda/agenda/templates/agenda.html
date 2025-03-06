@@ -7,10 +7,12 @@
 </head>
 <body>
     <h2>Agendamentos</h2>
-        
+
+    <ul>
     {% for evento in eventos %}
-    <b>{{ evento.titulo }} em {{ evento.data_evento}}</b>
+          <li>{{ evento.titulo }} em {{ evento.data_evento}} </li>
     {% endfor %}
+    </ul>
 
 </body>
 </html>
