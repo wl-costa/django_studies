@@ -10,7 +10,7 @@
 
     <ul>
     {% for evento in eventos %}
-          <li>{{ evento.titulo }} em {{ evento.data_evento}} </li>
+          <li>{{ evento.titulo }} em {{ evento.get_data_evento}} </li>
     {% endfor %}
     </ul>
 
