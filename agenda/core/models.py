@@ -17,4 +17,4 @@ class Evento(models.Model):
         return self.titulo # Retorna o título do evento como representação do objeto
     
     def get_data_evento(self):
-        return self.data_evento.strftime('%d/%m/%Y às %H:%M Hs')
+        return self.data_evento.strftime('%d/%m/%Y às %H:%M Hrs') # Retorna a data do evento formatada
