@@ -4,8 +4,8 @@ from core.models import Evento
 
 # Create your views here.
 
-def index(request):
-    return redirect('/agenda/') # Redireciona para a página agenda.html
+# def index(request):
+#     return redirect('/agenda/') # Redireciona para a página agenda.html
 
 def lista_eventos(request):
     # usuario = request.user # Pega o usuário logado no sistema e armazena na variável usuario 
