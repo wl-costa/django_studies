@@ -1,12 +1,13 @@
 from django.shortcuts import render, redirect # Importa as funções render e redirect do módulo shortcuts
 from core.models import Evento
-
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
 # def index(request):
 #     return redirect('/agenda/') # Redireciona para a página agenda.html
 
+@login_required()
 def lista_eventos(request):
     # usuario = request.user # Pega o usuário logado no sistema e armazena na variável usuario 
     evento = Evento.objects.all() # filter(usuario=usuario) # Filtra os eventos do usuário logado e armazena na variável evento
