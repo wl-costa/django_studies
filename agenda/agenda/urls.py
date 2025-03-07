@@ -23,4 +23,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('agenda/', views.lista_eventos),
     path('', RedirectView.as_view(url='/agenda/')), # Redireciona para a página agenda.html caso a URL seja vazia
+    path('login/', views.login_user),
+    path('login/submit', views.submit_login),
 ]
