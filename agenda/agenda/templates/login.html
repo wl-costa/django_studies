@@ -20,6 +20,9 @@
             <br>
             <button type="submit">Entrar</button>
         </form>
+        {% for message in messages %}
+            <strong>{{ message }}</strong>
+        {% endfor %}
     </div>
 </body>
 </html>
