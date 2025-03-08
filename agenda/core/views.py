@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect # Importa as funções render e re
 from core.models import Evento
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
 
 # Create your views here.
 
@@ -23,7 +24,8 @@ def submit_login(request):
         if usuario is not None:
             login(request, usuario)
             return redirect('/')
-    else:
+        else:
+            messages.error(request, 'Usuário e/ou senha inválidos')
         return redirect('/')
 
 @login_required(login_url='/login/') # Verifica se o usuário está logado, caso não esteja, redireciona para a página de login
