@@ -11,6 +11,10 @@ from django.contrib.auth import authenticate, login, logout
 def login_user(request):
     return render(request, 'login.html')
 
+def logout_user(request):
+    logout(request)
+    return redirect('/')
+
 def submit_login(request):
     if request.POST:
         username = request.POST.get('username')
