@@ -34,3 +34,7 @@ def lista_eventos(request):
     evento = Evento.objects.filter(usuario=usuario) # Filtra os eventos do usuário logado e armazena na variável evento
     dados = {'eventos': evento} # Cria um dicionário com o evento e armazena na variável dados
     return render(request, 'agenda.html', dados) # Renderiza a página agenda.html com os dados do dicionário
+
+@login_required(login_url='/login/')
+def evento(request):
+    return render(request, 'evento.html') # Renderiza a página evento.html
