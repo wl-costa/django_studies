@@ -3,6 +3,20 @@
 {% block content %}
 
 <h2>Novo Evento</h2>
+
+<label><b>Titulo</b></label>
+<br>
+<input type="text" placeholder="Nome do Evento" name="titulo" size="19" required>
+<br>
+<label><b>Data do Evento:</b></label>
+<br>
+<input type="datetime-local" placeholder="Data do Evento" name="data" required>
+<br>
+<label><b>Descrição</b></label>
+<br>
+<textarea placeholder="Descrição do Evento" rows="10" cols="35"name="descricao" required></textarea>
+<br>
+
 <a href="/agenda/">
 <button type="button">Ver Agendamentos</button>
 </a>
