@@ -3,6 +3,7 @@ from core.models import Evento
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from django.views.decorators.http import require_POST
 
 # Create your views here.
 
@@ -16,6 +17,7 @@ def logout_user(request):
     logout(request)
     return redirect('/')
 
+@require_POST
 def submit_login(request):
     username = request.POST.get('username')
     password = request.POST.get('password')
@@ -39,13 +41,13 @@ def evento(request):
     return render(request, 'evento.html') # Renderiza a página evento.html
 
 @login_required(login_url='/login/')
+@require_POST
 def submit_evento(request): # Função para submeter um evento no banco de dados
-    if request.POST:
-        titulo = request.POST.get('titulo')
-        data_evento = request.POST.get('data_evento')
-        descricao = request.POST.get('descricao')
-        usuario = request.user
-        Evento.objects.create(titulo=titulo, data_evento=data_evento, descricao=descricao, usuario=usuario) # Cria um evento no banco de dados
+    titulo = request.POST.get('titulo')
+    data_evento = request.POST.get('data_evento')
+    descricao = request.POST.get('descricao')
+    usuario = request.user
+    Evento.objects.create(titulo=titulo, data_evento=data_evento, descricao=descricao, usuario=usuario) # Cria um evento no banco de dados
     return redirect('/') # Redireciona para a página principal
 
 @login_required(login_url='/login/')
