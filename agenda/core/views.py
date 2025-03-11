@@ -48,3 +48,11 @@ def submit_evento(request): # Função para submeter um evento no banco de dados
         usuario = request.user
         Evento.objects.create(titulo=titulo, data_evento=data_evento, descricao=descricao, usuario=usuario) # Cria um evento no banco de dados
     return redirect('/') # Redireciona para a página principal
+
+@login_required(login_url='/login/')
+def delete_evento(request, id_evento):
+    usuario = request.user
+    evento = Evento.objects.get(id=id_evento)
+    if usuario == evento.usuario:
+        evento.delete() # Filtra o evento pelo id e deleta
+    return redirect('/') # Redireciona para a página principal

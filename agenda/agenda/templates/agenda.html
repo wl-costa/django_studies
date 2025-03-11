@@ -7,7 +7,10 @@
     </a>
     <ul style="list-style-type: none; font-size: 18px;">
     {% for evento in eventos %}
-          <li>{{ evento.titulo }} em {{ evento.get_data_evento}} </li>
+          <li>
+            {{ evento.titulo }} em {{ evento.get_data_evento}} 
+            ( <a href="#">Editar</a>/ <a href="#">Excluir</a> )
+        </li>
     {% endfor %}
     </ul>
 {% endblock %}
