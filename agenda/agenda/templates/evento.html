@@ -8,15 +8,15 @@
     {% csrf_token %}
     <label><b>Titulo</b></label>
     <br>
-    <input type="text" placeholder="Nome do Evento" name="titulo" size="19" required>
+    <input type="text" placeholder="Nome do Evento" name="titulo" size="19" value="{{ evento.titulo }}" required>
     <br>
     <label><b>Data do Evento:</b></label>
     <br>
-    <input type="datetime-local" placeholder="Data do Evento" name="data_evento" required>
+    <input type="datetime-local" placeholder="Data do Evento" name="data_evento" value="{{ evento.data_evento }}" required>
     <br>
     <label><b>Descrição</b></label>
     <br>
-    <textarea placeholder="Descrição do Evento" rows="10" cols="35"name="descricao" required></textarea>
+    <textarea placeholder="Descrição do Evento" rows="10" cols="35"name="descricao" required>{{ evento.descricao }}</textarea>
     <br><br>
     <button type="submit">Salvar</button>
     <a href="/agenda/">

@@ -38,7 +38,11 @@ def lista_eventos(request):
 
 @login_required(login_url='/login/')
 def evento(request):
-    return render(request, 'evento.html') # Renderiza a página evento.html
+    id_evento = request.GET.get('id')
+    dados = {}
+    if id_evento:
+        dados['evento'] = Evento.objects.get(id=id_evento)
+    return render(request, 'evento.html', dados) # Renderiza a página evento.html
 
 @login_required(login_url='/login/')
 @require_POST
