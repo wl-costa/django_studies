@@ -51,7 +51,16 @@ def submit_evento(request): # Função para submeter um evento no banco de dados
     data_evento = request.POST.get('data_evento')
     descricao = request.POST.get('descricao')
     usuario = request.user
-    Evento.objects.create(titulo=titulo, data_evento=data_evento, descricao=descricao, usuario=usuario) # Cria um evento no banco de dados
+    id_evento = request.POST.get('id_evento') # Pega o id do evento 
+    if id_evento:
+        Evento.objects.filter(id=id_evento).update(titulo=titulo,
+                                                   data_evento=data_evento,
+                                                   descricao=descricao) # Filtra o evento pelo id e atualiza
+    else:
+        Evento.objects.create(titulo=titulo,
+                              data_evento=data_evento,
+                              descricao=descricao,
+                              usuario=usuario) # Cria um evento no banco de dados
     return redirect('/') # Redireciona para a página principal
 
 @login_required(login_url='/login/')
