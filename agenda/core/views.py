@@ -4,6 +4,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.views.decorators.http import require_POST
+from datetime import datetime, timedelta # Importa a classe datetime e timedelta do módulo datetime
+from django.utils import timezone
 
 # Create your views here.
 
@@ -32,6 +34,7 @@ def submit_login(request):
 @login_required(login_url='/login/') # Verifica se o usuário está logado, caso não esteja, redireciona para a página de login
 def lista_eventos(request):
     usuario = request.user
+    data_atual = timezone.now() - timedelta(hours=1) # Pega a data atual e subtrai uma hora
     evento = Evento.objects.filter(usuario=usuario) # Filtra os eventos do usuário logado e armazena na variável evento
     dados = {'eventos': evento} # Cria um dicionário com o evento e armazena na variável dados
     return render(request, 'agenda.html', dados) # Renderiza a página agenda.html com os dados do dicionário
