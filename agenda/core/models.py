@@ -1,8 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from datetime import datetime
-from django.utils import timezone
-
+from datetime import datetime, timedelta
 # Create your models here.
 
 class Evento(models.Model):
@@ -25,7 +23,7 @@ class Evento(models.Model):
         return self.data_evento.strftime('%Y-%m-%dT%H:%M') # Retorna a data do evento formatada para o input do formulário
     
     def get_evento_atrasado(self):
-        if self.data_evento < timezone.now():
+        if self.data_evento < datetime.now() - timedelta(hours=1):
             return True
         else:
             return False
