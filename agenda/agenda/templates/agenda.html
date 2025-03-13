@@ -2,6 +2,18 @@
 
 {% block content %}
     <h2>Agendamentos</h2>
+    <form method="GET" action="/agenda/filter/">
+        <label for="data_inicio">Data de Início:</label>
+        <input type="date" id="data_inicio" name="data_inicio">
+        <label for="data_fim">Data de Fim:</label>
+        <input type="date" id="data_fim" name="data_fim">
+        <button type="submit">Filtrar</button>
+    </form>
+    <form method="GET" action="/agenda/search/">
+        <label for="procura_evento"></label>
+        <input type="text" id="procura_evento" name="procura_evento">
+        <button type="submit">Pesquisar</button>
+    </form>
     <ul style="list-style-type: none; font-size: 18px;">
     {% for evento in eventos %}
           <li>
