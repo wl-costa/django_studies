@@ -71,3 +71,24 @@ def delete_evento(request, id_evento):
     if usuario == evento.usuario:
         evento.delete() # Filtra o evento pelo id e deleta
     return redirect('/') # Redireciona para a página principal
+
+@login_required(login_url='/login/')
+def filter_eventos(request):
+    usuario = request.user
+    data_inicio = request.GET.get('data_inicio')
+    data_fim = request.GET.get('data_fim')
+    eventos = Evento.objects.filter(usuario=usuario)
+    if data_inicio and data_fim:
+        eventos = eventos.filter(data_evento__range=[data_inicio, data_fim])
+    dados = {'eventos': eventos}
+    return render(request, 'agenda.html', dados)
+
+@login_required(login_url='/login/')
+def search_eventos(request):
+    usuario = request.user
+    procura_evento = request.GET.get('procura_evento')
+    eventos = Evento.objects.filter(usuario=usuario)
+    if procura_evento:
+        eventos = eventos.filter(titulo__icontains=procura_evento)
+    dados = {'eventos': eventos}
+    return render(request, 'agenda.html', dados)

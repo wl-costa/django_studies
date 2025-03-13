@@ -29,4 +29,6 @@ urlpatterns = [
     path('login/', views.login_user),
     path('login/submit', views.submit_login),
     path('logout/', views.logout_user),
+    path('agenda/filter/', views.filter_eventos),
+    path('agenda/search/', views.search_eventos),
 ]
