@@ -1,6 +1,7 @@
 {% extends "model-page.html" %}
 
 {% block content %}
+<div class="agenda-container">
     <h2>Agendamentos</h2>
     <form method="GET" action="/agenda/filter/">
         <label for="data_inicio">Data de Início:</label>
@@ -30,4 +31,5 @@
     <a href="evento/">
         <button type="button" href="evento/">Novo Agendamento</button>
     </a>
+</div>
 {% endblock %}
