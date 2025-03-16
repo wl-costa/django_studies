@@ -6,5 +6,5 @@
         <a href="/logout">Sair</a>
     </div>
     <h1>Agenda</h1>
-    <p>Bem-vindo, {{ user.first_name|default:user.username }}!</p>
+    <p>Bem-vindo, {{ user.first_name }} {{ user.last_name|default:user.username }}!</p>
 </header>
