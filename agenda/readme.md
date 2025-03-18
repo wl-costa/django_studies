@@ -21,8 +21,8 @@ Além disso, a aplicação segue boas práticas de desenvolvimento, incluindo mo
 
 ## Tecnologias utilizadas (Stack)
 
-- **Linguagem:** Python
-- **Framework:** Django (versão X.X)
+- **Linguagem:** Python 3.13.2
+- **Framework:** Django 5.1.7
 - **Banco de Dados:** SQLite
 - **Ambiente Virtual:** venv
 - **Autenticação Social:** Django Social Auth (Google OAuth2)
