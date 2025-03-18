@@ -1,27 +1,32 @@
 {% extends "model-page.html" %}
 
 {% block content %}
-<div class="evento-container">
-    <h2>Novo Evento</h2>
+<div class="card shadow-sm p-4 bg-white rounded">
+    <h2 class="mb-4">{{ evento.id|yesno:"Editar Evento,Novo Evento" }}</h2>
+
     <form action="submit" method="post">
         {% csrf_token %}
-        <label><b>Titulo</b></label>
-        <br>
         <input type="hidden" name="id_evento" value="{{ evento.id }}">
-        <input type="text" placeholder="Nome do Evento" name="titulo" size="19" value="{{ evento.titulo }}" required>
-        <br>
-        <label><b>Data do Evento:</b></label>
-        <br>
-        <input type="datetime-local" placeholder="Data do Evento" name="data_evento" value="{{ evento.get_data_input_evento }}" required>
-        <br>
-        <label><b>Descrição</b></label>
-        <br>
-        <textarea placeholder="Descrição do Evento" rows="10" cols="35" name="descricao" required>{{ evento.descricao }}</textarea>
-        <br><br>
-        <button type="submit">Salvar</button>
-        <a href="/agenda/">
-        <button type="button">Cancelar</button>
-        </a>
+
+        <div class="mb-3">
+            <label class="form-label">Título</label>
+            <input type="text" name="titulo" class="form-control" placeholder="Nome do Evento" value="{{ evento.titulo }}" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Data do Evento</label>
+            <input type="datetime-local" name="data_evento" class="form-control" value="{{ evento.get_data_input_evento }}" required>
+        </div>
+
+        <div class="mb-4">
+            <label class="form-label">Descrição</label>
+            <textarea name="descricao" class="form-control" rows="5" placeholder="Descrição do Evento" required>{{ evento.descricao }}</textarea>
+        </div>
+
+        <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-dark">Salvar</button>
+            <a href="/agenda/" class="btn btn-outline-secondary">Cancelar</a>
+        </div>
     </form>
 </div>
 {% endblock %}

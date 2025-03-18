@@ -2,34 +2,38 @@
 
 {% block content %}
 <div class="agenda-container">
-    <h2>Agendamentos</h2>
-    <form method="GET" action="/agenda/filter/">
-        <label for="data_inicio">Data de Início:</label>
-        <input type="date" id="data_inicio" name="data_inicio">
-        <label for="data_fim">Data de Fim:</label>
-        <input type="date" id="data_fim" name="data_fim">
-        <button type="submit">Filtrar</button>
+    <h2 class="mb-4">Agendamentos</h2>
+
+    <form method="GET" action="/agenda/filter/" class="row g-3 mb-3">
+        <div class="col-md-4">
+            <label for="data_inicio" class="form-label">Data de Início:</label>
+            <input type="date" id="data_inicio" name="data_inicio" class="form-control">
+        </div>
+        <div class="col-md-4">
+            <label for="data_fim" class="form-label">Data de Fim:</label>
+            <input type="date" id="data_fim" name="data_fim" class="form-control">
+        </div>
+        <div class="col-md-4 align-self-end">
+            <button type="submit" class="btn btn-primary w-100">Filtrar</button>
+        </div>
     </form>
-    <form method="GET" action="/agenda/search/">
-        <label for="procura_evento"></label>
-        <input type="text" id="procura_evento" name="procura_evento">
-        <button type="submit">Pesquisar</button>
+
+    <form method="GET" action="/agenda/search/" class="input-group mb-4">
+        <input type="text" id="procura_evento" name="procura_evento" class="form-control" placeholder="Pesquisar evento...">
+        <button type="submit" class="btn btn-outline-secondary">Pesquisar</button>
     </form>
-    <ul style="list-style-type: none; font-size: 18px;">
-    {% for evento in eventos %}
-          <li>
-            <div style="{% if evento.get_evento_atrasado %}
-                            color:red
-                        {% endif %}">
-                {{ evento.titulo }} em {{ evento.get_data_evento}} 
-                ( <a href="evento/?id={{ evento.id }}">Editar</a> 
-                / <a href="evento/delete/{{ evento.id }}/">Excluir</a> )
-            </div>
-        </li>
-    {% endfor %}
+
+    <ul class="list-group mb-4">
+        {% for evento in eventos %}
+            <li class="list-group-item {% if evento.get_evento_atrasado %}list-group-item-danger{% endif %}">
+                <strong>{{ evento.titulo }}</strong> em {{ evento.get_data_evento }} 
+                <div class="mt-2">
+                    <a href="evento/?id={{ evento.id }}" class="btn btn-sm btn-warning me-2">Editar</a>
+                    <a href="evento/delete/{{ evento.id }}/" class="btn btn-sm btn-danger">Excluir</a>
+                </div>
+            </li>
+        {% endfor %}
     </ul>
-    <a href="evento/">
-        <button type="button" href="evento/">Novo Agendamento</button>
-    </a>
+    <a href="/agenda/evento/" class="btn btn-success">Novo Agendamento</a>
 </div>
 {% endblock %}
